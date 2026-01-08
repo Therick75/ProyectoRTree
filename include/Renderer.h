@@ -1,0 +1,68 @@
+#ifndef RENDERER_H
+#define RENDERER_H
+
+#include "Geometry.h"
+#include "RTree.h"
+#include "Graph.h"
+#include <windows.h>
+#include <vector>
+
+class Renderer {
+private:
+    HWND hwnd;
+    int width, height;
+    Rect viewBounds;
+    double zoom;
+    Point panOffset;
+
+    // Buffer de doble renderizado
+    HDC memDC;
+    HBITMAP memBitmap;
+
+    // Colores
+    COLORREF colorBackground;
+    COLORREF colorStreet;
+    COLORREF colorHighlight;
+    COLORREF colorMBR;
+    COLORREF colorSearchArea;
+    COLORREF colorRoute;
+    COLORREF colorStartPoint;
+    COLORREF colorEndPoint;
+    COLORREF colorGraphNode;
+
+    // Conversión de coordenadas geográficas a pantalla
+    POINT geoToScreen(const Point& p);
+    Point screenToGeo(int x, int y);
+
+public:
+    Renderer(HWND window, int w, int h);
+    ~Renderer();
+
+    // Configurar vista
+    void setViewBounds(const Rect& bounds);
+    void resetView();
+    void pan(int dx, int dy);
+    void zoomIn(int centerX, int centerY);
+    void zoomOut(int centerX, int centerY);
+
+    // Renderizado
+    void render(HDC hdc, const std::vector<Geometry>& geometries);
+    void renderRTreeNodes(HDC hdc, RTreeNode* node, int level);
+    void renderGeometry(HDC hdc, const Geometry& geom, bool highlight = false);
+    void renderSearchArea(HDC hdc, const Rect& area);
+    void renderSearchResults(HDC hdc, const std::vector<Geometry*>& results);
+
+    // Nuevo: Renderizado de grafo y rutas
+    void renderGraph(HDC hdc, const Graph& graph);
+    void renderRoute(HDC hdc, const Route& route);
+    void renderRoutePoint(HDC hdc, const Point& p, bool isStart);
+
+    // Obtener punto en coordenadas geográficas desde pantalla
+    Point getGeoPoint(int screenX, int screenY);
+
+    // Información
+    Rect getViewBounds() const { return viewBounds; }
+    double getZoom() const { return zoom; }
+};
+
+#endif // RENDERER_H

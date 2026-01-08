@@ -1,0 +1,78 @@
+# depslib dependency file v1.0
+1584205424 source:d:\proyectos\codeblock\proyectortree\resource.rc
+	<windows.h>
+	<commctrl.h>
+	<richedit.h>
+	"resource.h"
+
+1584205424 d:\proyectos\codeblock\proyectortree\resource.h
+
+1767570928 source:d:\proyectos\codeblock\proyectortree\src\rtree.cpp
+	"../include/RTree.h"
+	<limits>
+	<cmath>
+
+1767571666 source:d:\proyectos\codeblock\proyectortree\src\geojsonparser.cpp
+	"../include/GeoJSONParser.h"
+	<algorithm>
+	<cctype>
+
+1767571666 d:\proyectos\codeblock\proyectortree\include\geojsonparser.h
+	"Geometry.h"
+	<vector>
+	<string>
+	<fstream>
+	<sstream>
+
+1767835448 d:\proyectos\codeblock\proyectortree\include\geometry.h
+	<vector>
+	<cmath>
+	<limits>
+	<algorithm>
+
+1767570928 d:\proyectos\codeblock\proyectortree\include\rtree.h
+	"Geometry.h"
+	<vector>
+	<algorithm>
+	<queue>
+	<memory>
+
+1767582304 source:d:\proyectos\codeblock\proyectortree\src\renderer.cpp
+	"../include/Renderer.h"
+	<algorithm>
+
+1767581308 d:\proyectos\codeblock\proyectortree\include\renderer.h
+	"Geometry.h"
+	"RTree.h"
+	"Graph.h"
+	<windows.h>
+	<vector>
+
+1767581795 source:d:\proyectos\codeblock\proyectortree\main.cpp
+	<windows.h>
+	<commctrl.h>
+	<string>
+	<sstream>
+	<chrono>
+	"../include/Geometry.h"
+	"../include/RTree.h"
+	"../include/GeoJSONParser.h"
+	"../include/Renderer.h"
+	"../include/Graph.h"
+
+1767581065 d:\proyectos\codeblock\proyectortree\include\graph.h
+	"Geometry.h"
+	<vector>
+	<map>
+	<queue>
+	<set>
+	<limits>
+	<algorithm>
+	<cmath>
+
+1767582044 source:d:\proyectos\codeblock\proyectortree\src\graph.cpp
+	"../include/Graph.h"
+	<iostream>
+	<sstream>
+	<cmath>
+
